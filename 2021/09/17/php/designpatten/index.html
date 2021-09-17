@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-php/php常用设计模式"
+  id="post-php/designpatten"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2021/09/17/php/php%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+      <a href="/2021/09/17/php/designpatten/" class="article-date">
   <time datetime="2021-09-17T05:38:14.000Z" itemprop="datePublished">2021-09-17</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/php/">php</a>
+    <a class="article-category-link" href="/categories/php-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">php 设计模式</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">271</span>
+            <span class="post-count">378</span>
         </span>
     </span>
 
@@ -116,6 +116,9 @@
 <p>代码演示如下</p>
 </blockquote>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Connection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的静态变量存放实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Connection</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">static</span> <span class="variable">$instance</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的构造方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的克隆方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__clone</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 公共的静态方法对外提供实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Connection</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">Instance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">self</span>::<span class="variable">$instance</span> <span class="keyword">instanceof</span> Connection)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$instance</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">self</span>::<span class="variable">$instance</span> = <span class="keyword">new</span> <span class="built_in">self</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$instance</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h2><h3 id="解释-1"><a href="#解释-1" class="headerlink" title="解释"></a>解释</h3><p>工厂模式通常来说是根据输入的参数不同或者应用程序配置的不同来创建一种专门用来创建实例并且返回对应类的实例</p>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a>应用场景</h3><p>使用new 实例化具体类，每次需要使用到类时只需要调用工厂类的方法即可。通常会根据应用项目来具体开发</p>
 <blockquote>
 <p>to be continued</p>
 </blockquote>
@@ -183,7 +186,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/17/php/php%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/17/php/designpatten/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -197,7 +200,7 @@
   <nav class="article-nav">
     
     
-      <a href="/2021/09/17/php/thinkphp6-vue%E8%B7%A8%E5%9F%9FSession-cookie%E5%85%B1%E4%BA%AB%E9%97%AE%E9%A2%98/" class="article-nav-link">
+      <a href="/2021/09/17/php/thinkphp6session/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
         <div class="article-nav-title">thinkphp6-vue跨域Session/cookie共享问题</div>
       </a>
