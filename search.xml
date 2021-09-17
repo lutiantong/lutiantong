@@ -36,6 +36,7 @@
 </blockquote>
 ]]></content>
       <categories>
+        <category>后端开发</category>
         <category>php</category>
       </categories>
       <tags>
@@ -46,18 +47,81 @@
   <entry>
     <title>thinkphp6-vue跨域Session/cookie共享问题</title>
     <url>/2021/09/17/php/thinkphp6session/</url>
-    <content><![CDATA[<h2 id="场景再现"><a href="#场景再现" class="headerlink" title="场景再现"></a>场景再现</h2><blockquote>
-<p>  基于公司业务，在对原有的Yii2开发的前后端不分离的前台项目进行重构，技术选型上，出于后期方便招人维护考虑，后端使用了thinkphp6框架来替代原来的<br>Yii2框架进行开发，前端则使用vue完成业务流页面。部分需要做SEO优化的页面采用前后端不分离的形式完成，前端完成页面后，使用thinkphp6 的View模块渲染<br>由此引发出一个问题，需要在vue端和静态页面端实现登陆信息共享</p>
-</blockquote>
+    <content><![CDATA[<h2 id="场景再现"><a href="#场景再现" class="headerlink" title="场景再现"></a>场景再现</h2><p>   基于公司业务，在对原有的Yii2开发的前后端不分离的前台项目进行重构，技术选型上，出于后期方便招人维护考虑，后端使用了thinkphp6框架来替代原来的<br> Yii2框架进行开发，前端则使用vue完成业务流页面。部分需要做SEO优化的页面采用前后端不分离的形式完成，前端完成页面后，使用thinkphp6 的View模块渲染<br> 由此引发出一个问题，需要在vue端和静态页面端实现登陆信息共享</p>
 <hr>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2>]]></content>
       <categories>
+        <category>后端开发</category>
         <category>php</category>
       </categories>
       <tags>
         <tag>php</tag>
         <tag>thinkphp</tag>
         <tag>thinkphp6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php实现冒泡排序</title>
+    <url>/2021/09/17/php/php-bubblephp/</url>
+    <content><![CDATA[<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序(Bubble Sort) 属于一种典型的交换排序，对一组数据，比较相邻数据的大小，将值小数据在前面，值大的数据放在后面。</p>
+<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$arr</span> = [<span class="number">12</span>,<span class="number">5</span>,<span class="number">89</span>,<span class="number">13</span>,<span class="number">45</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>$arr</code>有6个数据，按照两两比较大小，将数字更大的交换到后面，数字较小的交换到前面</p>
+<blockquote>
+<p>1.第一轮排序 将最大的数字放在最后端</p>
+<blockquote>
+<p>第一次比较12 和 5 结果为5 12 89 13 45 6 <br /><br>第二次比较12 和 89 结果为 5 12 89 13 45 6 <br /><br>第三次比较89 和 13 结果为 5 12 13 89 45 6 <br /><br>第四次比较89 和 45 结果为 5 12 13 45 89 6 <br /><br>第五次比较89 和 6 结果为 5 12 13 45 6 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第一轮两两比较，可以确定最大的数字89已经到最后端，下一轮只需要比较前面的5个数字即可</p>
+<blockquote>
+<blockquote>
+<p>2.第二轮比较 将第二大的数字放在89的前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 13 45 6 89<br /><br>第二次比较12 和 12 结果为 5 12 13 45 6 89 <br /><br>第三次比较12 和 45 结果为 5 12 13 45 6 89 <br /><br>第四次比较45 和 6 结果为 5 12 13 6 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第二轮两两比较，可以确定第二大的数字45已经到倒数第二位，下一轮只需要比较前面的4个数字即可</p>
+<blockquote>
+<blockquote>
+<p>3.第三轮比较 将第三大的数字放在45的前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 13 6 45 89 <br /><br>第二次比较12 和 13 结果为 5 12 13 6 45 89 <br /><br>第三次比较13 和 45 结果为 5 12 13 6 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第三轮两两比较，可以确定第三大的数字13已经到最后端，下一轮只需要比较前面的3个数字即可</p>
+<blockquote>
+<blockquote>
+<p>4.第四轮比较 将第四大的数字放在13前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 6 13 45 89 <br /><br>第二次比较12 和 6 结果为 5 6 12 13 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第四轮两两比较，可以确定第四大的数字12已经到最后端，下一轮只需要比较前面的2个数字即可</p>
+<blockquote>
+<blockquote>
+<p>5.第五轮比较 判断出第一个数和第二个数谁比较大</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 6 12 13 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>通过以上5轮的排序，若干次的比较，可以得出一个结论<br><br /><br><strong>对于一个长度为N的数组，我们需要排序N-1轮，每i轮比较N-i次，对此，我们可以使用双重循环语句，外层循环控制比较轮次，内层循环控制每轮比较的次数<br><br/>代码展示如下</strong></p>
+<h3 id="冒泡排序代码"><a href="#冒泡排序代码" class="headerlink" title="冒泡排序代码"></a>冒泡排序代码</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">//定义一组随机数</span></span><br><span class="line"><span class="variable">$data</span> = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span> &lt; <span class="number">6</span>;<span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$data</span>[<span class="variable">$i</span>] = mt_rand(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubble</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//获取数组元素个数</span></span><br><span class="line">    <span class="variable">$count</span> = count(<span class="variable">$data</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line">        <span class="comment">//定义一个内层循环来比较数字</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="variable">$j</span>=<span class="number">0</span>;<span class="variable">$j</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>-<span class="variable">$i</span>;<span class="variable">$j</span>++)&#123;</span><br><span class="line">            <span class="comment">//如果前面的数字比后面的数字大，交换两个数的位置</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$data</span>[<span class="variable">$j</span>] &gt; <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="variable">$temp</span> = <span class="variable">$data</span>[<span class="variable">$j</span>];<span class="comment">//定义临时变量存储较大的数字</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>] = <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>];<span class="comment">//较小的数字往前挪以为</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>] = <span class="variable">$temp</span>;<span class="comment">//较大的数字往后挪一位</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$data</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>后端开发</category>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>冒泡排序</tag>
+        <tag>算法</tag>
       </tags>
   </entry>
 </search>

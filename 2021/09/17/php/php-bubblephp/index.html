@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title> 你若安好，便是晴天</title>
+      <title>php实现冒泡排序 |  你若安好，便是晴天</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -52,79 +52,8 @@
     
       
     <main class="content on">
-      
-<section class="cover">
-    
-  <div class="cover-frame">
-    <div class="bg-box">
-      <img src="/images/cover1.jpg" alt="image frame" />
-    </div>
-    <div class="cover-inner text-center text-white">
-      <h1><a href="/">你若安好，便是晴天</a></h1>
-      <div id="subtitle-box">
-        
-          <span id="subtitle">技术无止尽</span>
-        
-      </div>
-      <div>
-        
-      </div>
-    </div>
-  </div>
-  <div class="cover-learn-more">
-    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
-  </div>
-</section>
-
-
-
-
-<!-- Subtitle -->
-
-<div id="main">
-  <section class="outer">
-  
-  
-  
-<div class="notice" style="margin-top:50px">
-    <i class="ri-heart-fill"></i>
-    <div class="notice-content">在通往极致技术的道路上奔波着。</div>
-</div>
-
-
-<style>
-    .notice {
-        padding: 20px;
-        border: 1px dashed #e6e6e6;
-        color: #969696;
-        position: relative;
-        display: inline-block;
-        width: 100%;
-        background: #fbfbfb50;
-        border-radius: 10px;
-    }
-
-    .notice i {
-        float: left;
-        color: #999;
-        font-size: 16px;
-        padding-right: 10px;
-        vertical-align: middle;
-        margin-top: -2px;
-    }
-
-    .notice-content {
-        display: initial;
-        vertical-align: middle;
-    }
-</style>
-  
-  <article class="articles">
-    
-    
-    
-    
-    <article
+      <section class="outer">
+  <article
   id="post-php/php-bubblephp"
   class="article article-type-post"
   itemscope
@@ -135,10 +64,9 @@
     
     <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/09/17/php/php-bubblephp/"
-    >php实现冒泡排序</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  php实现冒泡排序
+</h1>
  
 
       
@@ -151,160 +79,177 @@
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/php/">php</a>
   </div>
-   
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">871</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
        
+  <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序(Bubble Sort) 属于一种典型的交换排序，对一组数据，比较相邻数据的大小，将值小数据在前面，值大的数据放在后面。</p>
+<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = [<span class="number">12</span>,<span class="number">5</span>,<span class="number">89</span>,<span class="number">13</span>,<span class="number">45</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>$arr</code>有6个数据，按照两两比较大小，将数字更大的交换到后面，数字较小的交换到前面</p>
+<blockquote>
+<p>1.第一轮排序 将最大的数字放在最后端</p>
+<blockquote>
+<p>第一次比较12 和 5 结果为5 12 89 13 45 6 <br /><br>第二次比较12 和 89 结果为 5 12 89 13 45 6 <br /><br>第三次比较89 和 13 结果为 5 12 13 89 45 6 <br /><br>第四次比较89 和 45 结果为 5 12 13 45 89 6 <br /><br>第五次比较89 和 6 结果为 5 12 13 45 6 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第一轮两两比较，可以确定最大的数字89已经到最后端，下一轮只需要比较前面的5个数字即可</p>
+<blockquote>
+<blockquote>
+<p>2.第二轮比较 将第二大的数字放在89的前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 13 45 6 89<br /><br>第二次比较12 和 12 结果为 5 12 13 45 6 89 <br /><br>第三次比较12 和 45 结果为 5 12 13 45 6 89 <br /><br>第四次比较45 和 6 结果为 5 12 13 6 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第二轮两两比较，可以确定第二大的数字45已经到倒数第二位，下一轮只需要比较前面的4个数字即可</p>
+<blockquote>
+<blockquote>
+<p>3.第三轮比较 将第三大的数字放在45的前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 13 6 45 89 <br /><br>第二次比较12 和 13 结果为 5 12 13 6 45 89 <br /><br>第三次比较13 和 45 结果为 5 12 13 6 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第三轮两两比较，可以确定第三大的数字13已经到最后端，下一轮只需要比较前面的3个数字即可</p>
+<blockquote>
+<blockquote>
+<p>4.第四轮比较 将第四大的数字放在13前面</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 12 6 13 45 89 <br /><br>第二次比较12 和 6 结果为 5 6 12 13 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>经过第四轮两两比较，可以确定第四大的数字12已经到最后端，下一轮只需要比较前面的2个数字即可</p>
+<blockquote>
+<blockquote>
+<p>5.第五轮比较 判断出第一个数和第二个数谁比较大</p>
+<blockquote>
+<p>第一次比较5 和 12 结果为5 6 12 13 45 89 <br /></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>通过以上5轮的排序，若干次的比较，可以得出一个结论<br><br /><br><strong>对于一个长度为N的数组，我们需要排序N-1轮，每i轮比较N-i次，对此，我们可以使用双重循环语句，外层循环控制比较轮次，内层循环控制每轮比较的次数<br><br/>代码展示如下</strong></p>
+<h3 id="冒泡排序代码"><a href="#冒泡排序代码" class="headerlink" title="冒泡排序代码"></a>冒泡排序代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一组随机数</span></span><br><span class="line"><span class="variable">$data</span> = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span> &lt; <span class="number">6</span>;<span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$data</span>[<span class="variable">$i</span>] = mt_rand(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubble</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//获取数组元素个数</span></span><br><span class="line">    <span class="variable">$count</span> = count(<span class="variable">$data</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line">        <span class="comment">//定义一个内层循环来比较数字</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="variable">$j</span>=<span class="number">0</span>;<span class="variable">$j</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>-<span class="variable">$i</span>;<span class="variable">$j</span>++)&#123;</span><br><span class="line">            <span class="comment">//如果前面的数字比后面的数字大，交换两个数的位置</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$data</span>[<span class="variable">$j</span>] &gt; <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="variable">$temp</span> = <span class="variable">$data</span>[<span class="variable">$j</span>];<span class="comment">//定义临时变量存储较大的数字</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>] = <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>];<span class="comment">//较小的数字往前挪以为</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>] = <span class="variable">$temp</span>;<span class="comment">//较大的数字往后挪一位</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$data</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
 
     <!-- copyright -->
     
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
     <footer class="article-footer">
        
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/17/php/php-bubblephp/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
 
    
+  <nav class="article-nav">
     
-</article>
-
     
-    <article
-  id="post-php/designpatten"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
+      <a href="/2021/09/17/php/designpatten/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">php常用设计模式</div>
+      </a>
     
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/09/17/php/designpatten/"
-    >php常用设计模式</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/09/17/php/designpatten/" class="article-date">
-  <time datetime="2021-09-17T05:38:14.000Z" itemprop="datePublished">2021-09-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/php/">php</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-php/thinkphp6session"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/09/17/php/thinkphp6session/"
-    >thinkphp6-vue跨域Session/cookie共享问题</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/09/17/php/thinkphp6session/" class="article-date">
-  <time datetime="2021-09-17T03:00:15.000Z" itemprop="datePublished">2021-09-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/php/">php</a>
-  </div>
-   
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thinkphp/" rel="tag">thinkphp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thinkphp6/" rel="tag">thinkphp6</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/09/14/hello-world/"
-    >Hello World</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/09/14/hello-world/" class="article-date">
-  <time datetime="2021-09-14T06:15:14.114Z" itemprop="datePublished">2021-09-14</time>
-</a>    
-    </div>
-       
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-  </article>
-  
+  </nav>
 
   
+   
+     
+</article>
+
 </section>
-</div>
-
       <footer class="footer">
   <div class="outer">
     <ul>
@@ -439,6 +384,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
 <link
