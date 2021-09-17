@@ -18,4 +18,43 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>thinkphp6-vue跨域Session/cookie共享问题</title>
+    <url>/2021/09/17/php/thinkphp6-vue%E8%B7%A8%E5%9F%9FSession-cookie%E5%85%B1%E4%BA%AB%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="场景再现"><a href="#场景再现" class="headerlink" title="场景再现"></a>场景再现</h2><blockquote>
+<p>  基于公司业务，在对原有的Yii2开发的前后端不分离的前台项目进行重构，技术选型上，出于后期方便招人维护考虑，后端使用了thinkphp6框架来替代原来的<br>Yii2框架进行开发，前端则使用vue完成业务流页面。部分需要做SEO优化的页面采用前后端不分离的形式完成，前端完成页面后，使用thinkphp6 的View模块渲染<br>由此引发出一个问题，需要在vue端和静态页面端实现登陆信息共享</p>
+</blockquote>
+<hr>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2>]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>thinkphp</tag>
+        <tag>thinkphp6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php常用设计模式</title>
+    <url>/2021/09/17/php/php%E5%B8%B8%E7%94%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p> 所谓的单例模式，就是指在应用程序中最多只有一个该类的实例存在，一旦创建，就会存在于内存中，不可被克隆，不可被<code>new()</code>实例化</p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>单例模式通常被应用于数据库设计，采用单例模式，一个应用程序内只打开一次数据库链接，防止打开多个数据库链接</p>
+<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>· 三私一公<br></br><br><strong>私有的构造方法__construct</strong> 用以阻止类被<code>new()</code><br><br /><br><strong>私有的克隆方法__clone()</strong> 用以阻止类被<code>clone</code><br><br /><br><strong>私有的静态变量$instance;</strong> 存放实例<br><br/><br><strong>公有的静态方法 static Instance()</strong> 用以对外部提供实例<br><br/></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><blockquote>
+<p>代码演示如下</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Connection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的静态变量存放实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Connection</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="built_in">static</span> <span class="variable">$instance</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的构造方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 私有的克隆方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">__clone</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 公共的静态方法对外提供实例</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> Connection</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">Instance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">self</span>::<span class="variable">$instance</span> <span class="keyword">instanceof</span> Connection)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$instance</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">self</span>::<span class="variable">$instance</span> = <span class="keyword">new</span> <span class="built_in">self</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">self</span>::<span class="variable">$instance</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>to be continued</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>php</category>
+      </categories>
+      <tags>
+        <tag>php</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
 </search>
