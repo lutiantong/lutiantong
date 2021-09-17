@@ -20,7 +20,7 @@
   </entry>
   <entry>
     <title>php常用设计模式</title>
-    <url>/2021/09/17/php/designpatten/</url>
+    <url>/2020/09/10/php/designpatten/</url>
     <content><![CDATA[<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><h3 id="解释"><a href="#解释" class="headerlink" title="解释"></a>解释</h3><p> 所谓的单例模式，就是指在应用程序中最多只有一个该类的实例存在，一旦创建，就会存在于内存中，不可被克隆，不可被<code>new()</code>实例化</p>
 <h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>单例模式通常被应用于数据库设计，采用单例模式，一个应用程序内只打开一次数据库链接，防止打开多个数据库链接</p>
 <h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>· 三私一公<br></br><br><strong>私有的构造方法__construct</strong> 用以阻止类被<code>new()</code><br><br /><br><strong>私有的克隆方法__clone()</strong> 用以阻止类被<code>clone</code><br><br /><br><strong>私有的静态变量$instance;</strong> 存放实例<br><br/><br><strong>公有的静态方法 static Instance()</strong> 用以对外部提供实例<br><br/></p>
@@ -62,7 +62,7 @@
   </entry>
   <entry>
     <title>php实现冒泡排序</title>
-    <url>/2021/09/17/php/php-bubblephp/</url>
+    <url>/2020/09/17/php/php-bubblephp/</url>
     <content><![CDATA[<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序(Bubble Sort) 属于一种典型的交换排序，对一组数据，比较相邻数据的大小，将值小数据在前面，值大的数据放在后面。</p>
 <h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="variable">$arr</span> = [<span class="number">12</span>,<span class="number">5</span>,<span class="number">89</span>,<span class="number">13</span>,<span class="number">45</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
 <blockquote>
