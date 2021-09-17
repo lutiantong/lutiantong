@@ -31,7 +31,28 @@
     <url>/2021/09/17/php/thinkphp6session/</url>
     <content><![CDATA[<h2 id="场景再现"><a href="#场景再现" class="headerlink" title="场景再现"></a>场景再现</h2><p>   基于公司业务，在对原有的Yii2开发的前后端不分离的前台项目进行重构，技术选型上，出于后期方便招人维护考虑，后端使用了thinkphp6框架来替代原来的<br> Yii2框架进行开发，前端则使用vue完成业务流页面。部分需要做SEO优化的页面采用前后端不分离的形式完成，前端完成页面后，使用thinkphp6 的View模块渲染<br> 由此引发出一个问题，需要在vue端和静态页面端实现登陆信息共享</p>
 <hr>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2>]]></content>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>用户从前后端分离模块进入到由php渲染的页面时，需要判断用户的登陆状态来显示一些数据信息。api接口上，是使用header携带APP-TOKEN<br>来完成判断的，同时，前端VUE将用户信息存储在Local Storage。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
+<li>方案一<br> 通过JS获取Local Storage的内容，来获取用户信息，在公共头部判断用户是否登陆，以此来展示用户信息<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">let</span> vuex = <span class="built_in">localStorage</span>.getItem(<span class="string">&#x27;vuex&#x27;</span>);</span><br><span class="line">    <span class="keyword">let</span> useInfo</span><br><span class="line">    vuex = <span class="built_in">JSON</span>.parse(vuex);</span><br><span class="line">    <span class="keyword">let</span> Dom = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&#x27;longinregister&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> DomName = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&#x27;longinregisterName&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(vuex &amp;&amp; vuex.userInfo)&#123;</span><br><span class="line">        useInfo = vuex.userInfo</span><br><span class="line">        Dom[<span class="number">0</span>].style.display = <span class="string">&#x27;none&#x27;</span>;</span><br><span class="line">        Dom[<span class="number">1</span>].style.display = <span class="string">&#x27;block&#x27;</span>;</span><br><span class="line">        DomName.innerHTML = <span class="string">&#x27;&lt;a role=&quot;button&quot; class=&quot;go-out&quot; onclick=&quot;logout()&quot;&gt;退出&lt;/a&gt;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">logout</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">localStorage</span>.clear()</span><br><span class="line">        sessionStorage.clear()</span><br><span class="line">        <span class="built_in">window</span>.location.reload()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+此方法可以在前端展示的时候，根据Local Storage中的内容判断用户是否登陆，但是以上方法只是在前端页面上实现了数据展示，<br>php服务端依然无法获取到当前用户是否登陆以及登陆信息</li>
+<li>通过共享Session的方式<br>通过观察接口请求信息发现，每次vue在请求服务端API接口时，所携带的PHPSESSIONID每次都不一样，经过Google以及百度多方查询后，得到了如下解决办法<blockquote>
+<p>Vue里<code>withCredentials</code>设置为false后，每次请求会不携带cookie信息，而Session是依赖于Cookie的，所以会导致每次请求的Session不一致</p>
+</blockquote>
+</li>
+</ol>
+<p>于是，修改属性</p>
+<p><code>axios.defaults.withCredentials = true; //意思是携带cookie信息,保持session的一致性</code></p>
+<p>同时，在php跨域请求中设置</p>
+<p><code>header(&quot;Access-Control-Allow-Credentials:true&quot;)</code></p>
+<p>设置完之后又出现了新的问题，将<code>Access-Control-Allow-Credentials</code>设置为true时 <code>Access-Control-Allow-Origin</code>不能设置为* * * 所以需要设置请求域名</p>
+<p>以上便完成了前后端分离与前后端不分离的Session/Cookie数据互通</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><blockquote>
+<p>前后端分离请求的接口域名，需要与php渲染页面的域名保持在同一个主域名下 且需要在thinkphp中设置Cookie的作用域域名，代码如下:<br><br />config/cookie.php</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">return</span> [</span><br><span class="line">    <span class="comment">// cookie 保存时间</span></span><br><span class="line">    <span class="string">&#x27;expire&#x27;</span>    =&gt; <span class="number">0</span>,</span><br><span class="line">    <span class="comment">// cookie 保存路径</span></span><br><span class="line">    <span class="string">&#x27;path&#x27;</span>      =&gt; <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    <span class="comment">// cookie 有效域名</span></span><br><span class="line">    <span class="string">&#x27;domain&#x27;</span>    =&gt; <span class="string">&#x27;.domain.com&#x27;</span>,</span><br><span class="line">    <span class="comment">//  cookie 启用安全传输</span></span><br><span class="line">    <span class="string">&#x27;secure&#x27;</span>    =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// httponly设置</span></span><br><span class="line">    <span class="string">&#x27;httponly&#x27;</span>  =&gt; <span class="literal">false</span>,</span><br><span class="line">    <span class="comment">// 是否使用 setcookie</span></span><br><span class="line">    <span class="string">&#x27;setcookie&#x27;</span> =&gt; <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// samesite 设置，支持 &#x27;strict&#x27; &#x27;lax&#x27;</span></span><br><span class="line">    <span class="string">&#x27;samesite&#x27;</span>  =&gt; <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>ending</p>
+]]></content>
       <categories>
         <category>后端开发</category>
         <category>php</category>
