@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>php实现冒泡排序 |  你若安好，便是晴天</title>
+      <title>使用go-zero+vue开发商城后台【准备篇】 |  你若安好，便是晴天</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -54,7 +54,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-php/php-bubblephp"
+  id="post-golang/postgo"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -65,7 +65,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  php实现冒泡排序
+  使用go-zero+vue开发商城后台【准备篇】
 </h1>
  
 
@@ -73,11 +73,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2020/08/12/php/php-bubblephp/" class="article-date">
-  <time datetime="2020-08-12T06:30:44.000Z" itemprop="datePublished">2020-08-12</time>
+      <a href="/2021/09/18/golang/postgo/" class="article-date">
+  <time datetime="2021-09-18T11:34:05.000Z" itemprop="datePublished">2021-09-18</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">后端开发</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/php/">php</a>
+    <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/">项目练习</a> / <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E7%BB%83%E4%B9%A0/go-zero/">go-zero</a>
   </div>
   
 <div class="word_count">
@@ -85,7 +85,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">871</span>
+            <span class="post-count">3</span>
         </span>
     </span>
 
@@ -94,71 +94,22 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>冒泡排序(Bubble Sort) 属于一种典型的交换排序，对一组数据，比较相邻数据的大小，将值小数据在前面，值大的数据放在后面。</p>
-<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$arr</span> = [<span class="number">12</span>,<span class="number">5</span>,<span class="number">89</span>,<span class="number">13</span>,<span class="number">45</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p><code>$arr</code>有6个数据，按照两两比较大小，将数字更大的交换到后面，数字较小的交换到前面</p>
-<blockquote>
-<p>1.第一轮排序 将最大的数字放在最后端</p>
-<blockquote>
-<p>第一次比较12 和 5 结果为5 12 89 13 45 6 <br /><br>第二次比较12 和 89 结果为 5 12 89 13 45 6 <br /><br>第三次比较89 和 13 结果为 5 12 13 89 45 6 <br /><br>第四次比较89 和 45 结果为 5 12 13 45 89 6 <br /><br>第五次比较89 和 6 结果为 5 12 13 45 6 89 <br /></p>
+  <blockquote>
+<p>to be continued</p>
 </blockquote>
-</blockquote>
-</blockquote>
-<p>经过第一轮两两比较，可以确定最大的数字89已经到最后端，下一轮只需要比较前面的5个数字即可</p>
-<blockquote>
-<blockquote>
-<p>2.第二轮比较 将第二大的数字放在89的前面</p>
-<blockquote>
-<p>第一次比较5 和 12 结果为5 12 13 45 6 89<br /><br>第二次比较12 和 12 结果为 5 12 13 45 6 89 <br /><br>第三次比较12 和 45 结果为 5 12 13 45 6 89 <br /><br>第四次比较45 和 6 结果为 5 12 13 6 45 89 <br /></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>经过第二轮两两比较，可以确定第二大的数字45已经到倒数第二位，下一轮只需要比较前面的4个数字即可</p>
-<blockquote>
-<blockquote>
-<p>3.第三轮比较 将第三大的数字放在45的前面</p>
-<blockquote>
-<p>第一次比较5 和 12 结果为5 12 13 6 45 89 <br /><br>第二次比较12 和 13 结果为 5 12 13 6 45 89 <br /><br>第三次比较13 和 45 结果为 5 12 13 6 45 89 <br /></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>经过第三轮两两比较，可以确定第三大的数字13已经到最后端，下一轮只需要比较前面的3个数字即可</p>
-<blockquote>
-<blockquote>
-<p>4.第四轮比较 将第四大的数字放在13前面</p>
-<blockquote>
-<p>第一次比较5 和 12 结果为5 12 6 13 45 89 <br /><br>第二次比较12 和 6 结果为 5 6 12 13 45 89 <br /></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>经过第四轮两两比较，可以确定第四大的数字12已经到最后端，下一轮只需要比较前面的2个数字即可</p>
-<blockquote>
-<blockquote>
-<p>5.第五轮比较 判断出第一个数和第二个数谁比较大</p>
-<blockquote>
-<p>第一次比较5 和 12 结果为5 6 12 13 45 89 <br /></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>通过以上5轮的排序，若干次的比较，可以得出一个结论<br><br /><br><strong>对于一个长度为N的数组，我们需要排序N-1轮，每i轮比较N-i次，对此，我们可以使用双重循环语句，外层循环控制比较轮次，内层循环控制每轮比较的次数<br><br/>代码展示如下</strong></p>
-<h3 id="冒泡排序代码"><a href="#冒泡排序代码" class="headerlink" title="冒泡排序代码"></a>冒泡排序代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一组随机数</span></span><br><span class="line"><span class="variable">$data</span> = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="variable">$i</span> = <span class="number">0</span>;<span class="variable">$i</span> &lt; <span class="number">6</span>;<span class="variable">$i</span>++) &#123;</span><br><span class="line">    <span class="variable">$data</span>[<span class="variable">$i</span>] = mt_rand(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bubble</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//获取数组元素个数</span></span><br><span class="line">    <span class="variable">$count</span> = count(<span class="variable">$data</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="variable">$i</span>=<span class="number">0</span>;<span class="variable">$i</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>;<span class="variable">$i</span>++)&#123;</span><br><span class="line">        <span class="comment">//定义一个内层循环来比较数字</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="variable">$j</span>=<span class="number">0</span>;<span class="variable">$j</span>&lt;<span class="variable">$count</span>-<span class="number">1</span>-<span class="variable">$i</span>;<span class="variable">$j</span>++)&#123;</span><br><span class="line">            <span class="comment">//如果前面的数字比后面的数字大，交换两个数的位置</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$data</span>[<span class="variable">$j</span>] &gt; <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>])&#123;</span><br><span class="line">                <span class="variable">$temp</span> = <span class="variable">$data</span>[<span class="variable">$j</span>];<span class="comment">//定义临时变量存储较大的数字</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>] = <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>];<span class="comment">//较小的数字往前挪以为</span></span><br><span class="line">                <span class="variable">$data</span>[<span class="variable">$j</span>+<span class="number">1</span>] = <span class="variable">$temp</span>;<span class="comment">//较大的数字往后挪一位</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$data</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
  
       <!-- reward -->
       
@@ -223,12 +174,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2020/08/12/php/php-bubblephp/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://example.com/2021/09/18/golang/postgo/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" rel="tag">冒泡排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go-zero/" rel="tag">go-zero</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/" rel="tag">vue</a></li></ul>
 
     </footer>
   </div>
@@ -236,15 +187,11 @@
    
   <nav class="article-nav">
     
-      <a href="/2020/09/10/php/designpatten/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            php常用设计模式
-          
-        </div>
-      </a>
     
+      <a href="/2021/09/17/php/thinkphp6session/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">thinkphp6-vue跨域Session/cookie共享问题</div>
+      </a>
     
   </nav>
 

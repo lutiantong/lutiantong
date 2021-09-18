@@ -127,4 +127,20 @@
         <tag>算法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用go-zero+vue开发商城后台【准备篇】</title>
+    <url>/2021/09/18/golang/postgo/</url>
+    <content><![CDATA[<blockquote>
+<p>to be continued</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>项目练习</category>
+        <category>go-zero</category>
+      </categories>
+      <tags>
+        <tag>go-zero</tag>
+        <tag>vue</tag>
+      </tags>
+  </entry>
 </search>
