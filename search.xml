@@ -145,4 +145,23 @@
         <tag>vue</tag>
       </tags>
   </entry>
+  <entry>
+    <title>JsonRpc</title>
+    <url>/2021/09/22/other/jsonrpc/</url>
+    <content><![CDATA[<h2 id="什么是RPC"><a href="#什么是RPC" class="headerlink" title="什么是RPC"></a>什么是RPC</h2><p>在分布式计算，远程过程调用（Remote Procedure Call 缩写 RPC）是一个计算机通信协议，该协议允许运行于一台计算机的程序调用另一个地址空间（通常为开放网络的一台计算机）的子程序<br>，而程序员就像调用本地程序一样，无需额外的为这个交互作用变成（无需关注细节）。RPC是一种服务器-客户端（Client/Server）模式，经典实现是一个通过 <strong>发送请求-接收回应</strong>进行信息交互的系统<br>如果设计的软件采用面向对象变成，那么远程过程调用亦可称作为<strong>远程调用</strong>或<strong>远程方法调用</strong><br>RPC是一种进程间通信的模式，程序分布在不同的地址空间里。如果在同一主机里，RPC可以通过不同的虚拟地址空间（即便使用相同的物理地址）进行通讯，而在不同的主机间，则通过不同的物理地址进行交互。许多技术（通常是不兼容）都是基于这种概念而实现的。</p>
+<blockquote>
+<p>以上摘自维基百科</p>
+</blockquote>
+<blockquote>
+<p>to be continued</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>开发必备</category>
+        <category>杂项</category>
+      </categories>
+      <tags>
+        <tag>JsonRpc</tag>
+      </tags>
+  </entry>
 </search>
